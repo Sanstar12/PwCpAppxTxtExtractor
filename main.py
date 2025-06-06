@@ -89,7 +89,7 @@ async def start(bot, message):
 
   await message.reply_photo(
     photo=random_image_url,
-    caption="**"This bot can extract course's txt without any limit. Join: @unlockededu**",
+    caption="**This bot can extract course's txt without any limit. Join: @unlockededu**",
     quote=True,
     reply_markup=reply_markup
   )
