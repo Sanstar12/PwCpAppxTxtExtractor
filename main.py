@@ -75,13 +75,13 @@ async def start(bot, message):
 
   keyboard = [
     [
-      InlineKeyboardButton("ðŸš€ Physics Wallah without Purchase ðŸš€", callback_data="pwwp")
+      InlineKeyboardButton("👉🏻Physics Wallah without Purchase👈🏻", callback_data="pwwp")
     ],
     [
-      InlineKeyboardButton("ðŸ“˜ Classplus without Purchase ðŸ“˜", callback_data="cpwp")
+      InlineKeyboardButton("👉🏻Classplus without Purchase ðŸ👈🏻, callback_data="cpwp")
     ],
     [
-      InlineKeyboardButton("ðŸ“’ Appx Without Purchase ðŸ“’", callback_data="appxwp")
+      InlineKeyboardButton("👉🏻Appx Without Purchase👈🏻, callback_data="appxwp")
     ]
   ]
 
