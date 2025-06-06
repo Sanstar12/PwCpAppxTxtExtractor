@@ -75,13 +75,13 @@ async def start(bot, message):
 
   keyboard = [
     [
-      InlineKeyboardButton("👉🏻Physics Wallah without Purchase👈🏻", callback_data="pwwp")
+      InlineKeyboardButton("🚀 Physics Wallah without Purchase 🚀", callback_data="pwwp")
     ],
     [
-      InlineKeyboardButton("👉🏻Classplus without Purchase ðŸ👈🏻, callback_data="cpwp")
+      InlineKeyboardButton("📘 Classplus without Purchase 📘", callback_data="cpwp")
     ],
     [
-      InlineKeyboardButton("👉🏻Appx Without Purchase👈🏻, callback_data="appxwp")
+      InlineKeyboardButton("📒 Appx Without Purchase 📒", callback_data="appxwp")
     ]
   ]
 
@@ -89,7 +89,7 @@ async def start(bot, message):
 
   await message.reply_photo(
     photo=random_image_url,
-    caption="**This bot can extract courses txt without any limit. Join: @unlockededu**",
+    caption="**"This bot can extract course's txt without any limit. Join: @unlockededu**",
     quote=True,
     reply_markup=reply_markup
   )
@@ -433,7 +433,7 @@ async def process_pwwp(bot: Client, m: Message, user_id: int):
                 try:
                     async with session.post(f"https://api.penpencil.co/v3/oauth/token", json=payload, headers=headers) as response:
                         access_token = (await response.json())["data"]["access_token"]
-                        monster = await editable.edit(f"<b>Physics Wallah Login Successful âœ…</b>\n\n<pre language='Save this Login Token for future usage'>{access_token}</pre>\n\n")
+                        monster = await editable.edit(f"<b>Physics Wallah Login Successful ✅</b>\n\n<pre language='Save this Login Token for future usage'>{access_token}</pre>\n\n")
                         editable = await m.reply_text("**Getting Batches In Your I'd**")
                     
                 except Exception as e:
@@ -454,7 +454,7 @@ async def process_pwwp(bot: Client, m: Message, user_id: int):
                     response.raise_for_status()
                     batches = (await response.json()).get("data", [])
             except Exception as e:
-                await editable.edit("**```\nLogin Failedâ—TOKEN IS EXPIRED```\nPlease Enter Working Token\n                       OR\nLogin With Phone Number**")
+                await editable.edit("**```\nLogin Failed❗TOKEN IS EXPIRED```\nPlease Enter Working Token\n                       OR\nLogin With Phone Number**")
                 return
         
             await editable.edit("**Enter Your Batch Name**")
@@ -874,7 +874,7 @@ async def process_cpwp(bot: Client, m: Message, user_id: int):
                                 for cnt, course in enumerate(courses):
                                     name = course['name']
                                     price = course['finalPrice']
-                                    text += f'{cnt + 1}. ```\n{name} ðŸ’µâ‚¹{price}```\n'
+                                    text += f'{cnt + 1}. ```\n{name} 💵₹{price}```\n'
 
                                 await editable.edit(f"**Send index number of the Category Name\n\n{text}\nIf Your Batch Not Listed Then Enter Your Batch Name**")
                             
@@ -914,7 +914,7 @@ async def process_cpwp(bot: Client, m: Message, user_id: int):
                                                 for cnt, course in enumerate(courses):
                                                     name = course['name']
                                                     price = course['finalPrice']
-                                                    text += f'{cnt + 1}. ```\n{name} ðŸ’µâ‚¹{price}```\n'
+                                                    text += f'{cnt + 1}. ```\n{name} 💵₹{price}```\n'
                                                 await editable.edit(f"**Send index number of the Batch to download.\n\n{text}**")
                                             
                                                 try:
@@ -994,7 +994,7 @@ async def process_cpwp(bot: Client, m: Message, user_id: int):
 
                                             await editable.delete(True)
                                         
-                                            caption = f"**App Name : ```\n{App_Name}({org_code})```\nBatch Name : ```\n{selected_batch_name}``````\nðŸŽ¬ : {video_count} | ðŸ“ : {pdf_count} | ðŸ–¼  : {image_count}``````\nTime Taken : {formatted_time}```**"
+                                            caption = f"**App Name : ```\n{App_Name}({org_code})```\nBatch Name : ```\n{selected_batch_name}``````\n🎬 : {video_count} | 📁 : {pdf_count} | 🖼  : {image_count}``````\nTime Taken : {formatted_time}```**"
                                         
                                             with open(file, 'rb') as f:
                                                 doc = await m.reply_document(document=f, caption=caption, file_name=f"{clean_batch_name}.txt")
@@ -1519,7 +1519,7 @@ async def process_appxwp(bot: Client, m: Message, user_id: int):
                     for cnt, course in enumerate(courses):
                         name = course["course_name"]
                         price = course["price"]
-                        text += f'{cnt + 1}. {name} ðŸ’µâ‚¹{price}\n'
+                        text += f'{cnt + 1}. {name} 💵₹{price}\n'
                     
                     course_details = f"{user_id}_paid_course_details"
                 
@@ -1552,7 +1552,7 @@ async def process_appxwp(bot: Client, m: Message, user_id: int):
                     for cnt, course in enumerate(courses):
                         name = course["course_name"]
                         price = course["price"]
-                        text += f'{cnt + 1}. ```\n{name} ðŸ’µâ‚¹{price}```\n'
+                        text += f'{cnt + 1}. ```\n{name} 💵₹{price}```\n'
                     await editable.edit(f"**Send index number of the course to download.\n\n{text}**")
             else:
                 raise Exception("Did not found any course")
@@ -1670,4 +1670,3 @@ if __name__ == "__main__":
     threading.Thread(target=run_flask).start()
     bot.run()
                                         
-
