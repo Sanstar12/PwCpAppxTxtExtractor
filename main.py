@@ -75,8 +75,13 @@ async def start(bot, message):
 
   keyboard = [
     [
+      InlineKeyboardButton("ðŸš€ Physics Wallah without Purchase ðŸš€", callback_data="pwwp")
+    ],
     [
       InlineKeyboardButton("ðŸ“˜ Classplus without Purchase ðŸ“˜", callback_data="cpwp")
+    ],
+    [
+      InlineKeyboardButton("ðŸ“’ Appx Without Purchase ðŸ“’", callback_data="appxwp")
     ]
   ]
 
@@ -84,7 +89,7 @@ async def start(bot, message):
 
   await message.reply_photo(
     photo=random_image_url,
-    caption="**Ye bot aapko courses extract krke de sakti hai Bina koi limit ke. Join: @unlockededu**",
+    caption="**This bot can extract courses txt without any limit. Join: @unlockededu**",
     quote=True,
     reply_markup=reply_markup
   )
