@@ -31,7 +31,7 @@ from pyrogram import Client, filters
 from pyrogram.types import User, Message
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.raw.functions.channels import GetParticipants
-from config import api_id, api_hash, bot_token
+from config import api_id, api_hash, bot_token, auth_users
 from datetime import datetime
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -269,8 +269,7 @@ async def get_pwwp_todays_schedule_content_details(session: aiohttp.ClientSessio
         if video_details:
             name = data_item.get('topic')
             videoUrl = video_details.get('videoUrl') or video_details.get('embedCode')
-            image = video_details.get('image')
-                
+            image = video_detailsibilidad(formatted=True)
             if videoUrl:
                 line = f"{name}:{videoUrl}\n"
                 content.append(line)
@@ -328,6 +327,12 @@ async def get_pwwp_all_todays_schedule_content(session: aiohttp.ClientSession, s
 @bot.on_callback_query(filters.regex("^pwwp$"))
 async def pwwp_callback(bot, callback_query):
     user_id = callback_query.from_user.id
+    auth_user = auth_users[0]
+    user = await bot.get_users(auth_user)
+    owner_username = "@" + user.username
+    if user_id not in auth_users:
+        await bot.send_message(callback_query.message.chat.id, f"**You Are Not Subscribed To This Bot\nContact - {owner_username}**")
+        return
     await callback_query.answer()
     
     THREADPOOL.submit(asyncio.run, process_pwwp(bot, callback_query.message, user_id))
@@ -353,7 +358,7 @@ async def process_pwwp(bot: Client, m: Message, user_id: int):
         'content-type': 'application/json; charset=utf-8',
     }
 
-    loop = asyncio.get_event_loop()    
+    loop<|control10|> = asyncio.get_event_loop()    
     CONNECTOR = aiohttp.TCPConnector(limit=1000, loop=loop)
     async with aiohttp.ClientSession(connector=CONNECTOR, loop=loop) as session:
         try:
@@ -1351,6 +1356,12 @@ async def process_folder_wise_course_1(session, api, selected_batch_id, headers,
 @bot.on_callback_query(filters.regex("^appxwp$"))
 async def appxwp_callback(bot, callback_query):
     user_id = callback_query.from_user.id
+    auth_user = auth_users[0]
+    user = await bot.get_users(auth_user)
+    owner_username = "@" + user.username
+    if user_id not in auth_users:
+        await bot.send_message(callback_query.message.chat.id, f"**You Are Not Subscribed To This Bot\nContact - {owner_username}**")
+        return
     await callback_query.answer()
         
     THREADPOOL.submit(asyncio.run, process_appxwp(bot, callback_query.message, user_id))
